@@ -10,38 +10,30 @@ const listPersons = [
     { name: "Nguyễn Mai Phương", age: 14, gender: "nữ" },
     { name: "Lê Văn Hà", age: 55, gender: "nam" },
   ]
-  //Example:
-  function countPersonByGender(listPerson, gender) {
-    let count=0;
-    // do something
+  
+console.log('Số thanh viên giới tính nam: '+ countPersonByGender(listPersons, 'nam'));
+console.log('Số thành viên giới tính nữ: '+ countPersonByGender(listPersons, 'nữ') );
+console.log(statisticsByAge(listPersons)) ;
 
-    for (i=0; i<listPerson.length; i++){
-        if(listPerson[i].gender==gender)
-            count++;
-    }
-    return count;
+function countPersonByGender(listPerson, gender) {
+  let count=0;
+  for (i=0; i<listPerson.length; i++){
+      if(listPerson[i].gender==gender)
+          count++;
   }
-  
-  function statisticsByAge(listPerson) {
-    // do something
-    tre=0, thanhNien=0, gia=0;
-    for (i=0; i<listPerson.length; i++){
-      if(listPerson[i].age<18) tre++;
-        else if (listPerson[i].age<=30) thanhNien++;
-          else gia++;
-    }
-    console.log("Số thành viên trẻ: "+ tre);
-    console.log("Số thành viên thanh niên: "+ thanhNien);
-    console.log("Số thành viên già: "+ gia);
+  return count;
+}
 
+function statisticsByAge(listPerson) {
+  let thongKe={
+    treCon: 0,
+    thanhNien: 0,
+    nguoiGia : 0
   }
-  function main() {
-    //console.log(countPersonByGender(listPersons, 'nam'));
-    console.log('Số thanh viên giới tính nam: '+ countPersonByGender(listPersons, 'nam'));
-    console.log('Số thành viên giới tính nữ: '+ countPersonByGender(listPersons, 'nữ') );
-    statisticsByAge(listPersons);
-    // do something
+  for (i=0; i<listPerson.length; i++){
+    if(listPerson[i].age<18) thongKe.treCon++;
+      else if (listPerson[i].age<=30) thongKe.thanhNien++;
+        else thongKe.nguoiGia++;
   }
-  
-  main();
-  
+  return thongKe;
+}
